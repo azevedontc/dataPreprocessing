@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from sklearn.preprocessing import StandardScaler, LabelEncoder, OneHotEncoder
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import SVC
@@ -19,7 +19,7 @@ print(data.isnull().sum())
 data = data.dropna()  # Remove linhas com valores nulos
 
 # Codificação de variáveis categóricas usando OneHotEncoder
-categorical_cols = ['Sex', 'ChestPainType', 'ExerciseAngina', 'ST_Slope']  # Colunas categóricas nominais
+categorical_cols = ['Sex', 'ChestPainType', 'ExerciseAngina', 'ST_Slope', 'RestingECG']  # Incluindo RestingECG agora
 data = pd.get_dummies(data, columns=categorical_cols, drop_first=True)
 
 # Normalização de variáveis numéricas
